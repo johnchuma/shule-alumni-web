@@ -1,4 +1,12 @@
-import { Button, Col, Container, Form, Row, Stack, Table } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  Row,
+  Stack,
+  Table,
+} from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Heading from "../../../general_widgets/heading";
 import { getGeneralTransactions } from "../../../controllers/transaction_controller";
@@ -11,16 +19,19 @@ export const DonationList = () => {
   const [searchInput, setSearchInput] = useState(""); // State for search input
   const [currentPage, setCurrentPage] = useState(1); // State for current page
   const donationsPerPage = 5; // Number of donations to display per page
-const [totalDonations, setTotalDonations] = useState(0);
+  const [totalDonations, setTotalDonations] = useState(0);
   useEffect(() => {
-    getGeneralTransactions().then((data) => setDonations(data));
+    getGeneralTransactions().then((data) => {
+      console.log(data);
+      setDonations(data || []);
+    });
   }, []);
   useEffect(() => {
     let amount = 0;
-    donations.map((item)=>{
-      amount = item.amount + amount
-    })
-    setTotalDonations(amount)
+    donations.map((item) => {
+      amount = item.amount + amount;
+    });
+    setTotalDonations(amount);
   }, [donations]);
   const handleSearchInputChange = (event) => {
     setSearchInput(event.target.value);
@@ -43,14 +54,28 @@ const [totalDonations, setTotalDonations] = useState(0);
 
   return (
     <div className="p-3" style={{ backgroundColor: "white" }}>
-       <Stack className="d-flex justify-content-between mb-2" direction="horizontal">
-          <Heading fontSize={"1.5vw"} text={"Donations"}/>
-          <div className="btn btn-pill" style={{ backgroundColor:"#FFD1D1",borderRadius:30 }}>
-          <Paragraph className={"d-none d-md-block"} fontWeight={600} text={"Total Donations: " + totalDonations + "TZS"} />
-          <div className={"d-block d-md-none"}  style={{ fontSize:"3.3vw",fontWeight:600 }} >{"Total: " + totalDonations + "TZS"} </div>
-
+      <Stack
+        className="d-flex justify-content-between mb-2"
+        direction="horizontal"
+      >
+        <Heading fontSize={"1.5vw"} text={"Donations"} />
+        <div
+          className="btn btn-pill"
+          style={{ backgroundColor: "#FFD1D1", borderRadius: 30 }}
+        >
+          <Paragraph
+            className={"d-none d-md-block"}
+            fontWeight={600}
+            text={"Total Donations: " + totalDonations + "TZS"}
+          />
+          <div
+            className={"d-block d-md-none"}
+            style={{ fontSize: "3.3vw", fontWeight: 600 }}
+          >
+            {"Total: " + totalDonations + "TZS"}{" "}
           </div>
-          </Stack>
+        </div>
+      </Stack>
       <Stack className="d-flex justify-content-end">
         <Row>
           <Col md={{ span: 4, offset: 8 }}>

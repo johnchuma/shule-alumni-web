@@ -77,12 +77,8 @@ const {Formik} = formik;
         <Route path='/dashboard/alumni' element={<AlumniPage/>}/>
         <Route path='/dashboard/alumni/:uuid' element={<AlumniPage/>}/>
         <Route path='/dashboard/notification' element={<ComposeMessage/>}/>
-
-        
-
         <Route path='/dashboard/general-news/:uuid' element={<ViewGeneralNews/>}/>
         <Route path='/dashboard/school-news/:uuid' element={<ViewSchoolNews/>}/>
-        
         <Route path='/dashboard/school-event/:uuid' element={<ViewSchoolEvent/>}/>
         <Route path='/dashboard/general-news' element={<GeneralNewsPage/>}/>
         <Route path='/dashboard/schools' element={<SchoolsPage/>}/>
@@ -96,7 +92,6 @@ const {Formik} = formik;
         <Route path='/dashboard/inquiries' element={<InquiriesPage/>}/>
         <Route path='/dashboard/projects' element={<ProjectPage/>}/>
         <Route path='/dashboard/projects/:uuid' element={<ProjectPage/>}/>
-
         <Route path='/dashboard/projects/details/:uuid' element={<ProjectDetails/>}/>
         <Route path='/dashboard/posts' element={<PostsPage  />}/>
         <Route path='/dashboard/posts/:uuid' element={<PostsPage  />}/>
